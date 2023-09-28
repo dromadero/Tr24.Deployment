@@ -3,6 +3,7 @@ version: '3.7'
 services:
 
   maria_db:
+    container_name: mariadbsrv
     image: mariadb:latest
     restart: always
     environment:
@@ -17,6 +18,7 @@ services:
       - maria-db-data:/var/lib/mariadb
 
   adminer:
+    container_name: adminersrv
     image: adminer:latest
     restart: always
     environment:
@@ -26,8 +28,9 @@ services:
       - 9080:8080
     depends_on:
       - maria_db 
-      
+
   phpmyadmin:
+    container_name: phasrv
     image: phpmyadmin
     restart: always
     ports:
