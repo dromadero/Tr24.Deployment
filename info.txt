@@ -4,3 +4,5 @@ docker run -d --name v01  v1
 
 docker-compose up -d
 docker compose up -d
+
+docker exec -it mariadb-mysql_db-1 mariadb --user root -p mysql

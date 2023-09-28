@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  mysql_db:
+  maria_db:
     image: mariadb:latest
     restart: always
     environment:
@@ -10,6 +10,7 @@ services:
       MARIADB_PASSWORD: 'mycoolsecret'
       MARIADB_USER: 'exampleuser'
       MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'no'
+      MARIADB_DATABASE: 'wordpress'
     ports: 
       - 3307:3307
     volumes:
@@ -20,12 +21,21 @@ services:
     restart: always
     environment:
       ADMINER_DESIGN: kahi
-      ADMINER_DEFAULT_SERVER: mysql_db
+      ADMINER_DEFAULT_SERVER: maria_db
     depends_on:
-      - mysql_db      
+      - maria_db      
     ports:
       - 9080:8080
 
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 9081:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - maria_db    
 
 volumes:
  maria-db-data:
