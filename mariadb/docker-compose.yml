@@ -21,12 +21,12 @@ services:
     restart: always
     environment:
       ADMINER_DESIGN: kahi
-      ADMINER_DEFAULT_SERVER: maria_db
-    depends_on:
-      - maria_db      
+      ADMINER_DEFAULT_SERVER: maria_db     
     ports:
       - 9080:8080
-
+    depends_on:
+      - maria_db 
+      
   phpmyadmin:
     image: phpmyadmin
     restart: always
