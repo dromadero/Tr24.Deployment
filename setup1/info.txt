@@ -1,2 +1,4 @@
 
 
+docker run --name docker-nginx -p 82:80 -d -v ~/Tr24.Deployment/setup1/html:/usr/share/nginx/html nginx
+
