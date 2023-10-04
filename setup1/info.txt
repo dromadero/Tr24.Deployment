@@ -6,4 +6,7 @@ docker run --name docker-nginx -p 82:80 -d -v ~/Tr24.Deployment/setup1/html:/usr
 docker volume create --name DataVolume1
 docker run -ti --rm -v DataVolume1:/datavolume1 ubuntu
 
-docker run --rm -ti -v DataVolume1:/datavolume1 ubuntu
+docker run --rm -it --name vv1 -v DataVolume1:/datavolume1 ubuntu
+docker exec -it vv1 sh
+
+docker run -it --name=vv2 --volumes-from vv1 ubuntu
