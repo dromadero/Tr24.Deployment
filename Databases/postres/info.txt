@@ -1,2 +1,7 @@
 
 
+docker exec -it postgres bash 
+
+
+psql -h localhost _U postgres 
+docker compose up -d
