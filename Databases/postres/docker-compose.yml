@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 'example'
+      POSTGRES_USER: 'jn'
+    ports: 
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+ pgdata:
+   labels:
+    - "net.tr.description=PostgresDB"
+    - "net.tr.department=Dromadero"
